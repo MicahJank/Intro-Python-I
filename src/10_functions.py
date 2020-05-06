@@ -14,4 +14,17 @@ num = int(num)
 # Print out "Even!" if the number is even. Otherwise print "Odd"
 
 # YOUR CODE HERE
+# Ternary style
+print("Even!" if is_even(num) == True else "Odd") 
+    
 
+num = input("Enter a number: ")
+num = int(num)
+
+# normal style
+if is_even(num):
+    print("Even!")
+else:
+    print("Odd")
+
+ 
