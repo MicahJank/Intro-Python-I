@@ -5,6 +5,8 @@
 x = 12
 
 def change_x():
+    # add global keyword - micah
+    global x
     x = 99
 
 change_x()
@@ -19,6 +21,8 @@ def outer():
     y = 120
 
     def inner():
+        # add nonlocal keyword - micah
+        nonlocal y 
         y = 999
 
     inner()
