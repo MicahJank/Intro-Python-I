@@ -63,13 +63,17 @@ def check_month_input(monthNum):
     else: 
         if monthNum < 1 or monthNum > 12:
             print("Invalid month input - please make sure your month input is a number between 1 and 12")
+            return
+        else:
+            return monthNum
 
 if len(inputs) == 1:
     month = datetime.today().month
     year = datetime.today().year
     print(calendar.month(year, month))
 elif len(inputs) == 2:
-    check_month_input(inputs[1])
-    month = inputs[1]
+    month = check_month_input(inputs[1])
     year = datetime.today().year
-    print(calendar.month(year, month))
+    if type(month) == int:
+        print(calendar.month(year, month))
+        
