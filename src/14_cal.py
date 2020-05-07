@@ -67,6 +67,19 @@ def check_month_input(monthNum):
         else:
             return monthNum
 
+def check_year_input(yearNum):
+    try:
+        yearNum = int(yearNum)
+    except:
+        print("Invalid string type for year input - please only use numbers for year(in format YYYY).")
+        return
+    else:
+        if yearNum < 0:
+            print('Invalid year input - please dont use negative numbers for years.')
+            return
+        else:
+            return yearNum
+
 if len(inputs) == 1:
     month = datetime.today().month
     year = datetime.today().year
@@ -76,4 +89,8 @@ elif len(inputs) == 2:
     year = datetime.today().year
     if type(month) == int:
         print(calendar.month(year, month))
-        
+elif len(inputs) == 3:
+    month = check_month_input(inputs[1])
+    year = check_year_input(inputs[2])
+    if type(year) == int and type(month) == int:
+        print(calendar.month(year, month))
