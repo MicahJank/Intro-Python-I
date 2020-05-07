@@ -30,3 +30,46 @@ it should use today’s date to get the month and year.
 import sys
 import calendar
 from datetime import datetime
+
+# Things i dont know
+# - How do i get values from the command line? - I need to be able to do this in order to grab the month and day the user inputs when running the start command
+  # print(sys.argv) will print me the command line input with everything put inside a list for me all i would need to do is remove the first item from the list and then i would be left with
+  # a list that just hast he 2 arguments i want - the month and year
+  # 
+# - How do i print a calendar using the calendar and/or datetime module i imported?
+  # print(datetime.today().month) - gives me the current month
+  # print(datetime.today().year) - gives me the current year
+  # print(calendar.month(2020, 5)) - prints out the calendar with the specified year and month
+
+
+# First i need to get the arguments from the command line
+
+# Next i need to use the calendar module to print out the calendar with that month and year the user specified
+
+# if the user doesnt put in a month or year - i need to use the datetime module to find the systems current month and year and use those values instead when printing the calendar
+
+# if the user passes only 1 argument - i need to assume that is the month and print the calendar using that month and the systems current year
+
+inputs = sys.argv
+
+def check_month_input(monthNum):
+    # there is a chance a user will put in a letter for the month instead of a number - in this case the casting will throw an error
+    # so it is better that i catch it here then have the program error out
+    try:
+        monthNum = int(monthNum)
+    except:
+        print("Invalid string type for month input - please make sure your month input is a number between 1 and 12")
+        return
+    else: 
+        if monthNum < 1 or monthNum > 12:
+            print("Invalid month input - please make sure your month input is a number between 1 and 12")
+
+if len(inputs) == 1:
+    month = datetime.today().month
+    year = datetime.today().year
+    print(calendar.month(year, month))
+elif len(inputs) == 2:
+    check_month_input(inputs[1])
+    month = inputs[1]
+    year = datetime.today().year
+    print(calendar.month(year, month))
