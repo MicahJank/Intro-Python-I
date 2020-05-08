@@ -73,3 +73,6 @@ d = {
 
 # How do you have to modify the f4 call below to make this work?
 f4(**d)
+
+# 1 * means its converting a list of arguments and converts it to a tuple
+# 2 ** means its converting a list of keyword arguments and converts it to a dictionairy 
